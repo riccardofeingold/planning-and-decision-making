@@ -24,11 +24,11 @@ def compare_lexicographic(a: Tuple[float], b: Tuple[float]) -> ComparisonOutcome
     if a == b:
         return INDIFFERENT
     
-    for a_element, b_element in zip(a, b):
-        difference = a_element - b_element
-        if difference < 0:
+    difference = a - b
+    for d in difference:
+        if d < 0:
             continue
-        elif difference == 0:
-            return FIRST_PREFERRED
-        else:
+        elif d > 0:
             return SECOND_PREFERRED
+        else:
+            return FIRST_PREFERRED
