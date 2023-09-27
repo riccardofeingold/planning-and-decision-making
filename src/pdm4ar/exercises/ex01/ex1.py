@@ -27,13 +27,13 @@ def compare_lexicographic(a: Tuple[float], b: Tuple[float]) -> ComparisonOutcome
             if a_element - b_element < 0:
                 continue
             else:
-                return SECOND_PREFERRED
+                return FIRST_PREFERRED
         elif counter > len(a):
-            return FIRST_PREFERRED
+            return SECOND_PREFERRED
         else:
             if counter == 0:
                 return INDIFFERENT
             else:
-                return FIRST_PREFERRED
+                return SECOND_PREFERRED
             
     return INDIFFERENT
