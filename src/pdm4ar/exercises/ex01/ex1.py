@@ -24,7 +24,12 @@ def compare_lexicographic(a: Tuple[float], b: Tuple[float]) -> ComparisonOutcome
     if a == b:
         return INDIFFERENT
     
-    difference = a - b
+    difference = []
+    for a_element, b_element in zip(a, b):
+        difference.append(a_element-b_element)
+    
+    print(difference)
+    print("\n")
     for d in difference:
         if d < 0:
             continue
