@@ -28,7 +28,7 @@ def compare_lexicographic(a: Tuple[float], b: Tuple[float]) -> ComparisonOutcome
     
     value = None
     for d in difference:
-        if d < 0:
+        if d != 0:
             value = d
             break
 
