@@ -19,23 +19,21 @@ def compare_lexicographic(a: Tuple[float], b: Tuple[float]) -> ComparisonOutcome
     Note that the terms are sorted lexicographically by importance.
     For example, the term in position 1 is less important than the one in position 0,
     but more important than the one in position 2
-    
+
     """
-    score_a = 0
-    score_b = 0
-    counter = len(a)
+    counter = 0
     for a_element, b_element in zip(a, b):
-        if a_element == b_element:
-            continue
-        elif a_element < b_element:
-            score_a += counter
+        if a_element != 0 and b_element != 0:
+            if a_element - b_element < 0:
+                continue
+            else:
+                return SECOND_PREFERRED
+        elif counter > len(a):
+            return FIRST_PREFERRED
         else:
-            score_b += counter
-        counter -= 1
-
-    if score_a > score_b:
-        return FIRST_PREFERRED
-    elif score_a < score_b:
-        return SECOND_PREFERRED
-
+            if counter == 0:
+                return INDIFFERENT
+            else:
+                return FIRST_PREFERRED
+            
     return INDIFFERENT
